@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrapper</title>
+  <link href="./assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="topnav" id="myTopnav">
+      <div class="container">
+        <a href="#dashboard" class="active">Dashboard</a>
+        <a href="#news">News</a>
+        <a href="javascript:void(0);" class="icon" onclick="toggleNavbar(this)">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container">
+      <div class="scrap-form">
+        <div class="alert">
+          <span class="closebtn" onclick="closeAlert(this)">&times;</span>
+        </div>
+        <form action="/action_page.php">
+          <label for="url">URL:</label>
+          <input type="text" id="url" name="url" placeholder="Please input URL">
+
+          <label for="element">Element:</label>
+          <input type="text" id="element" name="lastname" placeholder="Please input element">
+
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </main>
+  <script src="./assets/js/jquery-3.7.1.min.js"></script>
+  <script src="./assets/js/custom.js"></script>
+</body>
+</html>
