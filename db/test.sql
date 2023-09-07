@@ -24,9 +24,12 @@ CREATE TABLE `domain` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Data for the table `domain` */
+
+insert  into `domain`(`id`,`name`) values 
+(1,'https://newdrugsrx.mednoor.com');
 
 /*Table structure for table `element` */
 
@@ -36,9 +39,13 @@ CREATE TABLE `element` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Data for the table `element` */
+
+insert  into `element`(`id`,`name`) values 
+(1,'div'),
+(2,'img');
 
 /*Table structure for table `requests` */
 
@@ -51,10 +58,15 @@ CREATE TABLE `requests` (
   `element_id` mediumint(8) unsigned NOT NULL,
   `time` datetime NOT NULL,
   `duration` mediumint(8) unsigned NOT NULL,
+  `count` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Data for the table `requests` */
+
+insert  into `requests`(`id`,`domain_id`,`url_id`,`element_id`,`time`,`duration`,`count`) values 
+(1,1,1,1,'2023-09-08 04:11:15',5000,0),
+(2,1,2,2,'2023-09-08 04:12:05',4000,0);
 
 /*Table structure for table `url` */
 
@@ -64,9 +76,13 @@ CREATE TABLE `url` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Data for the table `url` */
+
+insert  into `url`(`id`,`name`) values 
+(1,'/'),
+(2,'/drugdetail');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
