@@ -6,10 +6,13 @@
     $data = $_REQUEST;
 
     // Parsing url seperately
-    $res = parseUrl($data["url"]);
+    $url = parseUrl($data["url"]);
 
     // Check Request URL
     // checkRequest($res["domain"], $res["url"], $data["element"]);
+
+    // Scrape data
+    scrapeData($url, $data["element"]);
   }
 
   /** Check Resquest URl so that the request is valid */
@@ -33,8 +36,8 @@
   }
 
   /** Scrape data */
-  function scrapeData() {
-
+  function scrapeData($url, $element) {
+    var_dump($url, $element);
   }
 
   function saveData() {
