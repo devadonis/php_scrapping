@@ -1,15 +1,23 @@
-function toggleNavbar(el) {
-  var x = document.getElementById("myTopnav");
+$("#toggler").on("click", (e) => {
+  $(e.currentTarget).toggleClass("change");
+  $("#topnav").toggleClass("responsive")
+});
 
-  el.classList.toggle("change");
+$("#closeAlert").on("click", (e) => {
+  $(e.currentTarget).parent().css({"opacity": 0});
+});
 
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
+$("#scrapeForm").on("submit", (e) => {
+  e.preventDefault();
+
+  const data = {
+    "url": url.value,
+    "element": element.value
   }
-}
 
-function closeAlert(e) {
-  e.parentElement.style.opacity = "0";
-}
+  $.post("/api/getdata", data, function(data, status) {
+    if (status === "success") {
+      console.log(data);
+    }
+  })
+})

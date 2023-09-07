@@ -2,14 +2,14 @@
   <div class="container">
     <div class="d-flex-centered">
       <div class="alert">
-        <span class="closebtn" onclick="closeAlert(this)">&times;</span>
+        <span class="closebtn" id="closeAlert">&times;</span>
       </div>
-      <form>
+      <form id="scrapeForm">
         <label for="url">URL:</label>
-        <input type="text" id="url" name="url" placeholder="Please input URL">
+        <input type="url" id="url" name="url" placeholder="Please input URL" required>
 
         <label for="element">Element:</label>
-        <input type="text" id="element" name="lastname" placeholder="Please input element">
+        <input type="text" id="element" name="element" placeholder="Please input element" required>
 
         <input type="submit" value="Submit">
       </form>

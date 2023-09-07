@@ -8,11 +8,11 @@
 </head>
 <body>
   <header>
-    <nav class="topnav" id="myTopnav">
+    <nav class="topnav" id="topnav">
       <div class="container">
-        <a href="/test" class="active">Dashboard</a>
-        <a href="/test/statistic/">Statistic</a>
-        <a href="javascript:void(0);" class="icon" onclick="toggleNavbar(this)">
+        <a href="/" class="active">Dashboard</a>
+        <a href="/statistic/">Statistic</a>
+        <a href="javascript:void(0);" class="icon" id="toggler">
           <div class="bar1"></div>
           <div class="bar2"></div>
           <div class="bar3"></div>

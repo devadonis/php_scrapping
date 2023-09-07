@@ -209,7 +209,7 @@ form {
   box-shadow: 1px 2px 8px #333333;
 }
 
-input[type=text], select {
+form input, form select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0 20px;
