@@ -1,3 +1,6 @@
 <?php require "layout/header.php" ?>
-<h2>Statistic</h2>
+<p>Select Domain(120)</p>
+<select>
+  <option>Google.com</option>
+</select>
 <?php require "layout/footer.php" ?>
