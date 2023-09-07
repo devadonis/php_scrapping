@@ -9,7 +9,7 @@
   define("ASSETS", "/assets");
 
   # Api names
-  define("SCRAPE_URL", "REQUEST_URL");
+  define("SCRAPE_URL", "SCRAPE_URL");
 
 
 
