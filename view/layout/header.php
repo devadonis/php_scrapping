@@ -10,8 +10,8 @@
   <header>
     <nav class="topnav" id="topnav">
       <div class="container">
-        <a href="/" class="active">Dashboard</a>
-        <a href="/statistic/">Statistic</a>
+        <a id="home" href="/" class="active">Home</a>
+        <a id="statistic" href="/statistic/">Statistic</a>
         <a href="javascript:void(0);" class="icon" id="toggler">
           <div class="bar1"></div>
           <div class="bar2"></div>

@@ -26,3 +26,20 @@ $("#scrapeForm").on("submit", (e) => {
 })
 
 // Set active Menu
+$(document).ready(
+  ()=> {
+    console.log(location.pathname);
+    const pathname = location.pathname;
+    // Calculate last path 
+    if (pathname === "/")
+    {
+      $("#home").addClass("active");
+      $("#statistic").removeClass("active");
+    }
+    else if (pathname === "/statistic/")
+    {
+      $("#statistic").addClass("active");
+      $("#home").removeClass("active");
+    }
+  }
+)
