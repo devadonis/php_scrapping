@@ -4,7 +4,7 @@
       <div class="alert">
         <span class="closebtn" onclick="closeAlert(this)">&times;</span>
       </div>
-      <form action="/action_page.php">
+      <form>
         <label for="url">URL:</label>
         <input type="text" id="url" name="url" placeholder="Please input URL">
 
