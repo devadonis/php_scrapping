@@ -6,11 +6,14 @@
 
   switch ($request) {
     case "":
-    case "/":
-      require VIEWS."scrape.html";
-    case "/statistic":
-      require VIEWS."statistic.html";
+    case "/test/":
+      require VIEW."/scrape.php";
+      break;
+    case "/test/statistic/":
+      require VIEW."/statistic.php";
+      break;
     default:
       http_response_code(404);
+      require VIEW."/404.php";
   }
 ?>

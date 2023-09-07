@@ -4,4 +4,4 @@
   define("DB_USER", "root");
   define("DB_PASSWORD", "");
   define("DB_DATABASE", "test");
-  define("VIEWS", __DIR__."views");
+  define("VIEW", dirname(__DIR__, 1)."/view");

@@ -202,14 +202,6 @@ body {
 }
 
 /* Form */
-.scrap-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
-  height: calc(100vh - 100px);
-}
-
 form {
   max-width: 500px;
   padding: 30px;
@@ -245,7 +237,7 @@ input[type=submit]:hover {
 
 /* The alert message box */
 .alert {
-  display: block;
+  display: none;
   padding: 20px;
   background-color: #f44336; /* Red */
   color: white;
@@ -272,7 +264,29 @@ input[type=submit]:hover {
   color: black;
 }
 
+/* 404 Page */
+h1.fof {
+  font-size: 50px;
+  padding-right: 12px;
+  color: #888;
+  animation: type .5s alternate infinite;
+}
+
 /* Utilities */
+.d-flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  height: calc(100vh - 100px);
+}
+
 .mx-auto {
   margin: auto;
+}
+
+/* Animation */
+@keyframes type{
+  from{box-shadow: inset -3px 0px 0px #888;}
+  to{box-shadow: inset -3px 0px 0px transparent;}
 }

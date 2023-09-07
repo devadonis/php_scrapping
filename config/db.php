@@ -6,5 +6,3 @@
   if ($connection->connect_error) {
     die("Connection failed: ".$connection->connect_error);
   }
-
-  echo nl2br("Database connected successfully\r\n");
