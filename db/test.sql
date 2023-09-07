@@ -46,15 +46,18 @@ DROP TABLE IF EXISTS `requests`;
 
 CREATE TABLE `requests` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `domain_id` int(10) unsigned DEFAULT NULL,
   `url_id` mediumint(8) unsigned NOT NULL,
   `element_id` mediumint(8) unsigned NOT NULL,
   `time` datetime NOT NULL,
   `duration` mediumint(8) unsigned NOT NULL,
+  `count` mediumint(9) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Data for the table `requests` */
+
+insert  into `requests`(`id`,`url_id`,`element_id`,`time`,`duration`,`count`) values 
+(1,0,0,'2023-09-08 06:02:23',0,0);
 
 /*Table structure for table `url` */
 
@@ -62,7 +65,8 @@ DROP TABLE IF EXISTS `url`;
 
 CREATE TABLE `url` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `domain_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
