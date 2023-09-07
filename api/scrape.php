@@ -1,4 +1,7 @@
 <?php
+  include_once "util.php";
+
+  /** Get scraped data */
   function getData() {
     $data = $_REQUEST;
 
@@ -6,17 +9,10 @@
     $res = parseUrl($data["url"]);
 
     // Check Request URL
-    checkRequest($res["domain"], $res["url"], $data["element"]);
+    // checkRequest($res["domain"], $res["url"], $data["element"]);
   }
 
-  function parseUrl($url) {
-    $res = explode("/", $url);
-    $domain = $res[0]."//".$res[2];
-    $url = explode($domain, $url)[1] == "" ? "/" : explode($domain, $url)[1];
-
-    return array("domain"=>$domain, "url"=>$url);
-  }
-
+  /** Check Resquest URl so that the request is valid */
   function checkRequest($domain, $url, $element) {
     $query = "SELECT requests.id, domain.name as domain, url.name AS url, element.name AS element, requests.time, requests.duration
       FROM requests
@@ -36,6 +32,7 @@
     }
   }
 
+  /** Scrape data */
   function scrapeData() {
 
   }
