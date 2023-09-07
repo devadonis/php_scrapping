@@ -6,10 +6,10 @@
   Database::initialize();
 
   $request = $_SERVER["REQUEST_URI"];
-
+  file_put_contents("debug.log",print_r($_REQUEST,true)."/n",FILE_APPEND);
   switch ($request) {
     case "/":
-      require VIEW."/scrape.php";
+      require VIEW."/home.php";
       break;
     case "/statistic/":
       require VIEW."/statistic.php";

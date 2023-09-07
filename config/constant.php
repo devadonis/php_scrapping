@@ -7,3 +7,9 @@
   define("DB_DATABASE", "test");
   define("VIEW", BASE_DIR."/view");
   define("ASSETS", "/assets");
+
+  # Api names
+  define("SCRAPE_URL", "REQUEST_URL");
+
+
+
