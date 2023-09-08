@@ -1,6 +1,7 @@
 <?php require "layout/header.php" ?>
   <div class="container">
     <div class="d-flex-centered">
+      <div class="loading"></div>
       <div class="alert" id="alert">
         <span class="closebtn" id="closeAlert">&times;</span>
         <span id="alertMessage"></span>
