@@ -1,8 +1,9 @@
 <?php require "layout/header.php" ?>
   <div class="container">
     <div class="d-flex-centered">
-      <div class="alert">
+      <div class="alert" id="alert">
         <span class="closebtn" id="closeAlert">&times;</span>
+        <span id="alertMessage"></span>
       </div>
       <form id="scrapeForm">
         <label for="url">URL:</label>

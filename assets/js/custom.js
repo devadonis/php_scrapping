@@ -1,4 +1,4 @@
-
+const API_URL = "/api/root.php";
 
 $(document).ready(
   () => {
@@ -29,14 +29,21 @@ $(document).ready(
     $("#scrapeForm").on("submit", (e) => {
       e.preventDefault();
 
-      const data = {
-        "url": url.value,
-        "element": element.value
-      }
+      $.post(API_URL, {
+        api: "SCRAPE_URL",
+        url: url.value,
+        element: element.value
+      }, (response) => {
+        response = JSON.parse(response);
 
-      $.post("/api/getdata", data, function (data, status) {
-        if (status === "success") {
-          console.log(data);
+        if (response.status === 0) {
+          if (response.data.msg === "success") { // Show response data
+            $("#alert").addClass("success").css({"opacity": 1});
+            $("#alertMessage").text(response.data.data);
+          } else { // Show error message
+            $("#alert").removeClass("success").css({"opacity": 1});
+            $("#alertMessage").text(response.data.msg);
+          }
         }
       })
     })

@@ -238,12 +238,12 @@ input[type=submit]:hover {
 
 /* The alert message box */
 .alert {
-  display: none;
+  opacity: 0;
   padding: 20px;
   background-color: #f44336; /* Red */
   color: white;
   margin-bottom: 50px;
-  transition: 1s;
+  transition: .5s;
 }
 
 .alert.success {
@@ -279,7 +279,7 @@ h1.fof {
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 148px);
 }
 
 .mx-auto {
