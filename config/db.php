@@ -15,6 +15,7 @@
       if (self::$connection->connect_error) {
         die("Connection failed: ".self::$connection->connect_error);
       }
+      self::$connection->execute_query("SET time_zone='+0:00';");
     }
 
     public static function close()
