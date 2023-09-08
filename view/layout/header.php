@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scraper</title>
+  <script src="<?php echo ASSETS; ?>/js/jquery-3.7.1.min.js"></script>
   <link href="<?php echo ASSETS; ?>/css/style.css" rel="stylesheet">
 </head>
 <body>

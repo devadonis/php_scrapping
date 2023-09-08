@@ -21,7 +21,16 @@ if (isset($_POST['api'])) {
       $data = getDomainList();
       break;
     case GET_ELEMENT_LIST:
+      $data = getElementList();
       break;
+    case GET_URL_COUNT_FROM_DOMAIN:
+      $data = getUrlCountFromDomain();
+      break;
+    case GET_ELEMENT_COUNT:
+      $data = getElementCount();
+      break;
+    case GET_ELEMENT_COUNT_FROM_DOMAIN:
+      $data = getElementCountFromDomain();
   }
   echo json_encode(array("status" => 0, "data" => $data));
 } else { // Invalid api request
