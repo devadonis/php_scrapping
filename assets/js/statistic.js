@@ -56,18 +56,18 @@ $(document).ready(
       // urls fetched from domain
       if (type === "domain") {
         // average fetch time from domain
-        // $.post(API_URL, {
-        //   api: "GET_AVERAGE_FETCH_TIME",
-        //   domainId: domainId
-        // },
-        //   (response) => {
-        //     response = JSON.parse(response);
-        //     if (response.status === 0)
-        //     {
-        //       console.log("average fetch time from domain", response.data);
-        //       $("average_fetch_time").text(response.data);
-        //     }
-        //   });
+        $.post(API_URL, {
+          api: "GET_AVERAGE_FETCH_TIME",
+          domainId: domainId
+        },
+          (response) => {
+            response = JSON.parse(response);
+            if (response.status === 0)
+            {
+              console.log("average fetch time from domain", response.data);
+              $("#average_fetch_time").text(response.data+"(s)");
+            }
+          });
 
         // urls from domain
         $.post(API_URL, {
