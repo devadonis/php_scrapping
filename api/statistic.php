@@ -1,45 +1,51 @@
 <?php
-  require_once "../config/db.php";
+require_once "../config/db.php";
+require_once "./util.php";
+Database::initialize();
 
-  Database::initialize();
+// Get domain list from db
+function getDomainList()
+{
+  $query = "SELECT * from domain";
+  $result = Database::$connection->execute_query($query, []);
+  return queryResultToArray($result);
+}
 
-  // Get domain list from db
-  function getDomainList(){
-    $query = "SELECT * from domain";
-    $result = Database::$connection->execute_query($query, []);
-    $rows = [];
-    while ($row = $result->fetch_assoc())
-    {
-      $rows[] = $row;
-    }
-    return $rows;
-  }
+// Get element list from db
+function getElementList()
+{
+  $query = "SELECT * from element";
+  $result = Database::$connection->execute_query($query, []);
+  return queryResultToArray($result);
+}
 
-  // Get element list from db
-  function getElementList(){
-    $query = "SELECT * from element";
-    $result = Database::$connection->execute_query($query, []);
-    $rows = [];
-    while ($row = $result->fetch_assoc())
-    {
-      $rows[] = $row;  
-    }
-    return $rows;
-  }
+// Get url count from domain
+function getUrlCountFromDomain()
+{
+  $domainId = $_POST["domainId"];
+  $query = "SELECT COUNT(*) AS c FROM url WHERE domain_id=?";
+  $result = Database::$connection->execute_query($query, [$domainId]);
+  $row = $result->fetch_assoc();
+  return $row["c"];
+}
 
-  // Get url count from domain
-  function getUrlCountFromDomain()
-  {
-    $domainId = $_POST["domainId"];
-    $query = "SELECT * from url WHERE domain_id=?";
-    $result = Database::$connection->execute_query($query, [$domainId]);
-    $rows = [];
-    while ($row = $result->fetch_assoc())
-    {
-      $rows[] = $row;
-    }
-    return $rows;
-  }
-
-
- 
+// Get element count so far
+function getElementCount()
+{
+  $elementId = $_POST["elementId"];
+  $query = "SELECT COUNT(*) AS c FROM requests WHERE element_id=?";
+  $result = Database::$connection->execute_query($query, [$elementId]);
+  $row = $result->fetch_assoc();
+  return $row["c"];
+}
+// Get element count from a specific domain
+function getElementCountFromDomain()
+{
+  $elementId = $_POST["elementId"];
+  $domainId = $_POST["domainId"];
+  $query = "SELECT COUNT(*) AS c FROM requests LEFT JOIN url ON requests.url_id=url.id 
+  WHERE requests.element_id=? AND url.domain_id=?";
+  $result = Database::$connection->execute_query($query, [$elementId, $domainId]);
+  $row = $result->fetch_assoc();
+  return $row["c"];
+}
