@@ -44,7 +44,6 @@ $(document).ready(
       const element = $( "#element option:selected" ).text();
       $('#span_element_name1').text(element);
       $('#span_element_name2').text(element);
-
     })
 
     // update information
