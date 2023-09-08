@@ -1,5 +1,3 @@
-const API_URL = "/api/root.php";
-
 $(document).ready(
   () => {
 

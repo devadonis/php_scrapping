@@ -19,6 +19,16 @@ function getElementList()
   return queryResultToArray($result);
 }
 
+// Get Average Fetch Time from domain
+function getAverageFetchTime()
+{
+  $domainId = $_POST["domainId"];
+  $query = "SELECT AVG(duration) AS average FROM requests WHERE domain_id=? AND time >= DATE_SUB(NOW(), INTERVAL 24 HOUR)";
+  $result = Database::$connection->execute_query($query, [$domainId]);
+  $row = $result->fetch_assoc();
+  return $row["average"];
+}
+
 // Get url count from domain
 function getUrlCountFromDomain()
 {

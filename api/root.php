@@ -23,6 +23,9 @@ if (isset($_POST['api'])) {
     case GET_ELEMENT_LIST:
       $data = getElementList();
       break;
+    case GET_AVERAGE_FETCH_TIME:
+      $data = getAverageFetchTime();
+      break;
     case GET_URL_COUNT_FROM_DOMAIN:
       $data = getUrlCountFromDomain();
       break;

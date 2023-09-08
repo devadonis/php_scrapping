@@ -10,7 +10,7 @@
         <option>Google.com</option>
       </select>
       <p>Average fetch time from domain</p>
-      <p class="result">24s</p>
+      <p class="result" id="average_fetch_time">___</p>
       <p>Urls fetched from domain</p>
       <p class="result" id="urls_from_domain">___</p>
       <hr class="separator" />
