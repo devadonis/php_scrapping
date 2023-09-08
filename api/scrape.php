@@ -81,7 +81,7 @@ function getData($url, $element)
 {
   $timestamp = microtime(true);
   $html = getUrlContent("https://" . $url["domain"] . "/" . $url["path"]); // Scrape url
-  var_dump("https://" . $url["domain"] . "/" . $url["path"]);
+  // var_dump("https://" . $url["domain"] . "/" . $url["path"]);
   if ($html === FALSE) {
     $result["msg"] = "Invalid URL.";
     return $result;
