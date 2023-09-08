@@ -1,4 +1,5 @@
 <?php
+  require_once "./config/constant.php";
   require_once "./config/db.php";
   Database::initialize();
 

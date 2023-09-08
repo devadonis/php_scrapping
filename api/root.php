@@ -1,5 +1,6 @@
 <?php
 require_once "../config/constant.php";
+require_once "./scrape.php";
 require_once "./statistic.php";
 // file_put_contents("debug.log",print_r($_POST,true)."/n",FILE_APPEND);
 // var_dump($_POST);
@@ -14,6 +15,7 @@ if (isset($_POST['api'])) {
   
   switch ($api) {
     case SCRAPE_URL: // Scrape url api
+      $data = scrapeData();
       break;
     case GET_DOMAIN_LIST:
       $data = getDomainList();

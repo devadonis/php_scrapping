@@ -14,11 +14,12 @@ $("#scrapeForm").on("submit", (e) => {
   e.preventDefault();
 
   const data = {
+    "api": "SCRAPE_URL",
     "url": url.value,
     "element": element.value
   }
 
-  $.post("/api/getdata", data, function(data, status) {
+  $.post("/api/root.php", data, function(data, status) {
     if (status === "success") {
       console.log(data);
     }
