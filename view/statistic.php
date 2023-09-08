@@ -27,4 +27,6 @@
     </form>
   </div>
 </div>
+</main>
+<!-- script goes here -->
 <?php require "layout/footer.php" ?>
