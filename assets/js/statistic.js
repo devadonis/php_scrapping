@@ -64,7 +64,7 @@ $(document).ready(
             if (response.status === 0)
             {
               console.log("average fetch time from domain", response.data);
-              $("#average_fetch_time").text(response.data+"(s)");
+              $("#average_fetch_time").text(response.data ? response.data+"(s)":"___" );
             }
           });
 

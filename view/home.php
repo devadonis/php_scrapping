@@ -13,7 +13,7 @@
         <label for="element">Element:</label>
         <input type="text" id="element" name="element" placeholder="Please input element" required>
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Check">
       </form>
     </div>
   </div>

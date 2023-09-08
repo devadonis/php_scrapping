@@ -44,19 +44,19 @@ function getUrlCountFromDomain()
 function getElementCount()
 {
   $elementId = $_POST["elementId"];
-  $query = "SELECT COUNT(*) AS c FROM requests WHERE element_id=?";
+  $query = "SELECT SUM(count) AS c FROM requests WHERE element_id=?";
   $result = Database::$connection->execute_query($query, [$elementId]);
   $row = $result->fetch_assoc();
-  return $row["c"];
+  return $row["c"]?$row["c"]:0;
 }
 // Get element count from a specific domain
 function getElementCountFromDomain()
 {
   $elementId = $_POST["elementId"];
   $domainId = $_POST["domainId"];
-  $query = "SELECT COUNT(*) AS c FROM requests LEFT JOIN url ON requests.url_id=url.id 
+  $query = "SELECT SUM(count) AS c FROM requests LEFT JOIN url ON requests.url_id=url.id 
   WHERE requests.element_id=? AND url.domain_id=?";
   $result = Database::$connection->execute_query($query, [$elementId, $domainId]);
   $row = $result->fetch_assoc();
-  return $row["c"];
+  return $row["c"]?$row["c"]:0;
 }
