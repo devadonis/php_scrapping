@@ -1,8 +1,5 @@
 <?php
-  require_once "./config/constant.php";
   require_once "./config/db.php";
-  require_once "./api/scrape.php";
-
   Database::initialize();
 
   $request = $_SERVER["REQUEST_URI"];
@@ -13,9 +10,6 @@
       break;
     case "/statistic/":
       require VIEW."/statistic.php";
-      break;
-    case "/api/getdata":
-      getData();
       break;
     default:
       http_response_code(404);

@@ -10,6 +10,8 @@
 
   # Api names
   define("SCRAPE_URL", "SCRAPE_URL");
-
+  define("GET_DOMAIN_LIST", "GET_DOMAIN_LIST");
+  define("GET_ELEMENT_LIST", "GET_ELEMENT_LIST");
+  
 
 
