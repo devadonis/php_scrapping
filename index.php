@@ -1,5 +1,7 @@
 <?php
   require_once "./config/db.php";
+  require_once "./config/constant.php";
+
   Database::initialize();
 
   $request = $_SERVER["REQUEST_URI"];
