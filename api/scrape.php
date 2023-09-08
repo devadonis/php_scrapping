@@ -12,38 +12,42 @@
       return $url;
     }
 
-    // // Check Request URL
-    // // checkRequest($res["domain"], $res["url"], $data["element"]);
+    // Check Request URL
+    checkRequest($url["domain"], $url["path"], $data["element"]);
 
     // Scrape data
-    $scrapeData = getData($url, $data["element"]);
+    // $scrapeData = getData($url, $data["element"]);
 
-    if ($scrapeData["msg"] === "success") {
-      $result = saveData($url, $data["element"], $scrapeData);
-    } else {
-      $result["msg"] = $scrapeData["msg"];
-    }
+    // if ($scrapeData["msg"] === "success") {
+    //   $result = saveData($url, $data["element"], $scrapeData);
+    // } else {
+    //   $result["msg"] = $scrapeData["msg"];
+    // }
 
-    return $result;
+    // return $result;
   }
 
   /** Check Resquest URl so that the request is valid */
   function checkRequest($domain, $url, $element) {
-    $query = "SELECT requests.id, domain.name as domain, url.name AS url, element.name AS element, requests.time, requests.duration
-      FROM requests
-      LEFT JOIN domain ON requests.domain_id = domain.id
-      LEFT JOIN url ON requests.url_id = url.id
-      LEFT JOIN element ON requests.element_id = element.id
-      WHERE domain.name=? AND url.name=? AND element.name=?
-      ORDER BY requests.time DESC LIMIT 1";
+    $query = "SELECT * FROM requests WHERE id = LAST_INSERT_ID() ORDER BY id DESC LIMIT 1";
 
-    $result = Database::$connection->execute_query($query, [$domain, $url, $element])->fetch_assoc();
+    $row = Database::$connection->execute_query($query, [])->fetch_assoc();
+    var_dump($row);
+    // $query = "SELECT requests.id, domain.name as domain, url.name AS url, element.name AS element, requests.time, requests.duration
+    //   FROM requests
+    //   LEFT JOIN domain ON requests.domain_id = domain.id
+    //   LEFT JOIN url ON requests.url_id = url.id
+    //   LEFT JOIN element ON requests.element_id = element.id
+    //   WHERE domain.name=? AND url.name=? AND element.name=?
+    //   ORDER BY requests.time DESC LIMIT 1";
+
+    // $result = Database::$connection->execute_query($query, [$domain, $url, $element])->fetch_assoc();
     
-    if ($result) {
-      // return old value and upgrade time
-    } else {
-      // scrape data
-    }
+    // if ($result) {
+    //   // return old value and upgrade time
+    // } else {
+    //   // scrape data
+    // }
   }
 
   /** Scrape data */

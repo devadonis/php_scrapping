@@ -18,4 +18,5 @@
   </div>
   </main>
   <!-- script goes here -->
+  <script src="<?php echo ASSETS; ?>/js/home.js"></script>
 <?php require "layout/footer.php" ?>
