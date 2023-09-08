@@ -23,10 +23,11 @@ function getElementList()
 function getAverageFetchTime()
 {
   $domainId = $_POST["domainId"];
-  $query = "SELECT AVG(duration) AS average FROM requests WHERE domain_id=? AND time >= DATE_SUB(NOW(), INTERVAL 24 HOUR)";
+  $query = "SELECT AVG(duration) AS a FROM requests LEFT JOIN url ON requests.url_id=url.id 
+  WHERE url.domain_id=? AND requests.time >= DATE_SUB(NOW(), INTERVAL 24 HOUR)";
   $result = Database::$connection->execute_query($query, [$domainId]);
   $row = $result->fetch_assoc();
-  return $row["average"];
+  return $row["a"];
 }
 
 // Get url count from domain

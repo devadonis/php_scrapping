@@ -35,9 +35,15 @@ $(document).ready(
     // handle select change for domain and element
     $('#domain').on('change', () => {
       updateInfo("domain");
+      const domain = $( "#domain option:selected" ).text();
+      $('#span_domain_name').text(domain);
+
     })
     $('#element').on('change', () => {
       updateInfo("element");
+      const element = $( "#element option:selected" ).text();
+      $('#span_element_name1').text(element);
+      $('#span_element_name2').text(element);
     })
 
     // update information
@@ -58,7 +64,7 @@ $(document).ready(
             if (response.status === 0)
             {
               console.log("average fetch time from domain", response.data);
-              $("average_fetch_time").text(response.data);
+              $("#average_fetch_time").text(response.data+"(s)");
             }
           });
 
