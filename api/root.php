@@ -2,8 +2,7 @@
 require_once "../config/constant.php";
 require_once "./scrape.php";
 require_once "./statistic.php";
-// file_put_contents("debug.log",print_r($_POST,true)."/n",FILE_APPEND);
-// var_dump($_POST);
+
 /*
 Return data format:
   data: response data 

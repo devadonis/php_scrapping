@@ -56,13 +56,13 @@ function getUrlContent($url)
   $host = $parts['host'];
   $ch = curl_init();
   $header = array(
-    'GET /1575051 HTTP/1.1',
+    // 'GET /1575051 HTTP/1.1',
     "Host: {$host}",
-    'Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Language:en-US,en;q=0.8',
-    'Cache-Control:max-age=0',
-    'Connection:keep-alive',
-    'Host:adfoc.us',
+    // 'Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    // 'Accept-Language:en-US,en;q=0.8',
+    // 'Cache-Control:max-age=0',
+    // 'Connection:keep-alive',
+    // 'Host:adfoc.us',
     'User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36',
   );
 
@@ -81,7 +81,7 @@ function getData($url, $element)
 {
   $timestamp = microtime(true);
   $html = getUrlContent("https://" . $url["domain"] . "/" . $url["path"]); // Scrape url
-  // var_dump("https://" . $url["domain"] . "/" . $url["path"]);
+
   if ($html === FALSE) {
     $result["msg"] = "Invalid URL.";
     return $result;
