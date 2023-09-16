@@ -33,14 +33,14 @@ function getRecentResult($domain, $url, $element)
 {
   //check if url exists
   $query = "SELECT url.id as url_id FROM url LEFT JOIN domain ON url.domain_id=domain.id 
-    WHERE url.path=? AND domain.name=?";
-  $row = Database::$connection->execute_query($query, [$url, $domain])->fetch_assoc();
+    WHERE url.path='".$url."' AND domain.name='".$domain."'";
+  $row = Database::$connection->query($query)->fetch_assoc();
 
   if ($row) //if url exists, search for recent requests
   {
     $url_id = $row['url_id'];
-    $query = "SELECT * FROM requests LEFT JOIN element ON requests.element_id=element.id WHERE url_id=? AND element.name=? AND requests.time >= DATE_SUB(NOW(), INTERVAL 5 MINUTE)ORDER BY requests.time DESC LIMIT 1 ";
-    $row = Database::$connection->execute_query($query, [$url_id, $element])->fetch_assoc();
+    $query = "SELECT * FROM requests LEFT JOIN element ON requests.element_id=element.id WHERE url_id=".$url_id." AND element.name='".$element."' AND requests.time >= DATE_SUB(NOW(), INTERVAL 5 MINUTE)ORDER BY requests.time DESC LIMIT 1 ";
+    $row = Database::$connection->query($query)->fetch_assoc();
     if ($row) {
       $result = array("time" => $row['time'], "duration" => $row['duration'], "count" => $row['count'], "msg" => "success");
       return $result;
@@ -113,44 +113,44 @@ function getData($url, $element)
 function saveData($url, $element, $scrapeData)
 {
   // If there is no saved element, save it and return id
-  $query = "SELECT id FROM element WHERE name=? LIMIT 1";
-  $result = Database::$connection->execute_query($query, [$element]);
+  $query = "SELECT id FROM element WHERE name='".$element."' LIMIT 1";
+  $result = Database::$connection->query($query);
 
   if ($result->num_rows === 0) {
-    $query = "INSERT INTO element (name) VALUES (?)";
-    $result = Database::$connection->execute_query($query, [$element]);
+    $query = "INSERT INTO element (name) VALUES ('".$element."')";
+    $result = Database::$connection->query($query);
     $elementId = Database::$connection->insert_id;
   } else {
     $elementId = $result->fetch_assoc()["id"];
   }
 
   // If there is no saved domain, save it and return id
-  $query = "SELECT id FROM domain WHERE name=? LIMIT 1";
-  $result = Database::$connection->execute_query($query, [$url["domain"]]);
+  $query = "SELECT id FROM domain WHERE name='".$url["domain"]."' LIMIT 1";
+  $result = Database::$connection->query($query);
 
   if ($result->num_rows === 0) {
-    $query = "INSERT INTO domain (name) VALUES (?)";
-    $result = Database::$connection->execute_query($query, [$url["domain"]]);
+    $query = "INSERT INTO domain (name) VALUES ('".$url["domain"]."')";
+    $result = Database::$connection->query($query);
     $domainId = Database::$connection->insert_id;
   } else {
     $domainId = $result->fetch_assoc()["id"];
   }
 
   // If there is no saved url, save it and return id
-  $query = "SELECT id FROM url WHERE path=? AND domain_id=? LIMIT 1";
-  $result = Database::$connection->execute_query($query, [$url["path"], $domainId]);
+  $query = "SELECT id FROM url WHERE path='".$url["path"]."' AND domain_id=".$domainId." LIMIT 1";
+  $result = Database::$connection->query($query);
 
   if ($result->num_rows === 0) {
-    $query = "INSERT INTO url (path, domain_id) VALUES (?, ?)";
-    $result = Database::$connection->execute_query($query, [$url["path"], $domainId]);
+    $query = "INSERT INTO url (path, domain_id) VALUES ('".$url["path"]."',".$domainId.")";
+    $result = Database::$connection->query($query);
     $urlId = Database::$connection->insert_id;
   } else {
     $urlId = $result->fetch_assoc()["id"];
   }
 
   // Save response data and if there is any error return error message
-  $query = "INSERT INTO requests (url_id, element_id, time, duration, count) VALUES (?, ?, ?, ?, ?)";
-  $result = Database::$connection->execute_query($query, [$urlId, $elementId, $scrapeData["time"], $scrapeData["duration"], $scrapeData["count"]]);
+  $query = "INSERT INTO requests (url_id, element_id, time, duration, count) VALUES (".$urlId.",".$elementId.",'".$scrapeData["time"]."',".$scrapeData["duration"].",".$scrapeData["count"].")";
+  $result = Database::$connection->query($query);
   $requestId = Database::$connection->insert_id;
 
   if ($requestId) {

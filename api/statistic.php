@@ -7,7 +7,7 @@ Database::initialize();
 function getDomainList()
 {
   $query = "SELECT * from domain";
-  $result = Database::$connection->execute_query($query, []);
+  $result = Database::$connection->query($query);
   return queryResultToArray($result);
 }
 
@@ -15,7 +15,7 @@ function getDomainList()
 function getElementList()
 {
   $query = "SELECT * from element";
-  $result = Database::$connection->execute_query($query, []);
+  $result = Database::$connection->query($query);
   return queryResultToArray($result);
 }
 
@@ -24,8 +24,8 @@ function getAverageFetchTime()
 {
   $domainId = $_POST["domainId"];
   $query = "SELECT AVG(duration) AS a FROM requests LEFT JOIN url ON requests.url_id=url.id 
-  WHERE url.domain_id=? AND requests.time >= DATE_SUB(NOW(), INTERVAL 24 HOUR)";
-  $result = Database::$connection->execute_query($query, [$domainId]);
+  WHERE url.domain_id=".$domainId." AND requests.time >= DATE_SUB(NOW(), INTERVAL 24 HOUR)";
+  $result = Database::$connection->query($query);
   $row = $result->fetch_assoc();
   return $row["a"];
 }
@@ -34,8 +34,8 @@ function getAverageFetchTime()
 function getUrlCountFromDomain()
 {
   $domainId = $_POST["domainId"];
-  $query = "SELECT COUNT(*) AS c FROM url WHERE domain_id=?";
-  $result = Database::$connection->execute_query($query, [$domainId]);
+  $query = "SELECT COUNT(*) AS c FROM url WHERE domain_id='".$domainId."'";
+  $result = Database::$connection->query($query);
   $row = $result->fetch_assoc();
   return $row["c"];
 }
@@ -44,8 +44,8 @@ function getUrlCountFromDomain()
 function getElementCount()
 {
   $elementId = $_POST["elementId"];
-  $query = "SELECT SUM(count) AS c FROM requests WHERE element_id=?";
-  $result = Database::$connection->execute_query($query, [$elementId]);
+  $query = "SELECT SUM(count) AS c FROM requests WHERE element_id='".$elementId."'";
+  $result = Database::$connection->query($query);
   $row = $result->fetch_assoc();
   return $row["c"]?$row["c"]:0;
 }
@@ -55,8 +55,8 @@ function getElementCountFromDomain()
   $elementId = $_POST["elementId"];
   $domainId = $_POST["domainId"];
   $query = "SELECT SUM(count) AS c FROM requests LEFT JOIN url ON requests.url_id=url.id 
-  WHERE requests.element_id=? AND url.domain_id=?";
-  $result = Database::$connection->execute_query($query, [$elementId, $domainId]);
+  WHERE requests.element_id='".$elementId."' AND url.domain_id='".$domainId."'";
+  $result = Database::$connection->query($query);
   $row = $result->fetch_assoc();
   return $row["c"]?$row["c"]:0;
 }
