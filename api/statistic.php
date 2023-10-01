@@ -1,8 +1,4 @@
 <?php
-require_once "../config/db.php";
-require_once "./util.php";
-Database::initialize();
-
 // Get domain list from db
 function getDomainList()
 {

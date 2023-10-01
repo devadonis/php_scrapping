@@ -1,7 +1,11 @@
 <?php
 require_once "../config/constant.php";
+require_once "../config/db.php";
+include_once "util.php";
 require_once "./scrape.php";
 require_once "./statistic.php";
+
+Database::initialize();
 
 /*
 Return data format:
@@ -38,4 +42,6 @@ if (isset($_POST['api'])) {
 } else { // Invalid api request
   echo json_encode(array("status" => 1, "data" => "Something wrong!"));
 }
+
+Database::close();
 ?>
