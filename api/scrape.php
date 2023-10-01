@@ -1,6 +1,4 @@
 <?php
-include_once "util.php";
-
 /** Get scraped data */
 function scrapeData()
 {
